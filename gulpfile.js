@@ -13,3 +13,11 @@ gulp.task('style', function() {
 		}))
 		.pipe(jscs());
 });
+
+gulp.task('inject', function() {
+	var wiredep = require('wiredep').stream;
+
+	return gulp.src('./src/views/*.html')
+		.pipe(wiredep(options))
+		.pipe(gulp.dest('./src/views'));
+})
